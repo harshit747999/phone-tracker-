@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Phone Tracker</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding: 30px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #location {
+            margin-top: 25px;
+            font-size: 16px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Lost Phone Tracker</h1>
+
+    <button onclick="getLocation()">Share My Location</button>
+
+    <p id="location">Location not shared yet.</p>
+
+    <script>
+
+        function getLocation() {
+            navigator.geolocation.getCurrentPosition(showLocation);
+        }
+
+        function showLocation(position) {
+
+            let latitude = position.coords.latitude;
+            let longitude = position.coords.longitude;
+
+            document.getElementById("location").innerHTML =
+                "Latitude: " + latitude +
+                "<br>Longitude: " + longitude +
+                "<br><br>" +
+                '<a href="https://www.google.com/maps?q=' +
+                latitude + ',' + longitude +
+                '" target="_blank">Open Location on Map</a>';
+        }
+
+    </script>
+
+</body>
+
+</html>
